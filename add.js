@@ -81,7 +81,8 @@ function read_data(){
         set_focusin_handler();//focusin handler
         set_del_column_button(); //set all del_column_button
         set_checkbox();
-        set_del_all_column_button()
+        set_del_all_column_button();
+        show_info();
         //set_press_enter_invalid(); //set all input prevent from press enter
     }, 
     function(error) {
@@ -115,10 +116,21 @@ function set_checkbox(){
 }  
 //set all list_content focus detect
 function set_focus_detect(){
+    var first_content;
+    $(".list_content").focusin(function(){
+        first_content = $(this).val();
+    });
     $(".list_content").focusout(function(){
         var name = $(this).attr('name');
         var content = $(this).val();
-        update_data(name,content,0);
+        if(first_content != content){
+            update_data(name,content,0);
+        }else{
+            update_data(name,content,0);
+            // $(".list_content").off("blur");
+            // //set_focusin_handler();
+            // console.log("hh");
+        }
     });
 };
 //focusin handler (prevent other focusin event occur )
@@ -157,6 +169,12 @@ function set_del_all_column_button(){
         }
     });
 }
+function show_info(){
+    $('#info').slideDown("slow");
+    setTimeout(function() {
+        $('#info').slideUp("slow");
+    },1500);
+}
 //prevent form submit
 // function set_press_enter_invalid(){
 //    $('.list_content').keypress(function(e) {
@@ -175,7 +193,12 @@ $( document ).ready(function() {
     //===== events handler
     $(".add_button").click(function(){
         add_data();
+        $("#add_button").css("background-image","url('add_after.png')");
+        setTimeout(function() {
+            $("#add_button").css("background-image","url('add.png')"); 
+        },100);
     });
+
     
 });
 
