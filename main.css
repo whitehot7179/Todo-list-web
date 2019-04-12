@@ -122,7 +122,17 @@
     border:none;
     cursor: pointer;
 }
-
+.list_title>img{
+    width: 30px;
+    height: 25px;
+    margin-right:3px;
+    float:right;
+    cursor: pointer;
+}
+.list_title>img:hover{
+    background: rgb(85, 85, 85);
+    box-shadow: 0 0 20px rgb(85, 85, 85);
+}
 /*hidden scrollbar*/
 html {
     overflow: -moz-hidden-unscrollable;

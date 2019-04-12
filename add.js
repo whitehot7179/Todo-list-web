@@ -40,15 +40,22 @@ function update_data(key,content,done){
 
 //delete data
 function delete_data(key){
-    db.ref('todolist/column/'+key).remove();
+    console.log(key);
+    if($.isArray(key)){
+        for(var i=0;i<key.length;i++){
+            db.ref('todolist/column/'+key[i]).remove();
+        }
+    }else db.ref('todolist/column/'+key).remove();
+    
     console.log('delete');
+    console.log(key[0]);
     read_data(); //reload data from db again
 }
 
 //load all data
 function read_data(){
     var unfinished_column = '<div class="list_title"> - 待完成</div>';
-    var finished_column = '<div class="list_title"> - 已完成</div>';
+    var finished_column = '<div class="list_title"> - 已完成<img class="del_all_column_button" src="del_all.png" alt="" ></div>';
     db.ref('todolist/column').once('value',function(snapshot){
         snapshot.forEach(function(data){
             var recieved_content = data.val().content; //get content
@@ -74,6 +81,7 @@ function read_data(){
         set_focusin_handler();//focusin handler
         set_del_column_button(); //set all del_column_button
         set_checkbox();
+        set_del_all_column_button()
         //set_press_enter_invalid(); //set all input prevent from press enter
     }, 
     function(error) {
@@ -137,7 +145,18 @@ function set_del_column_button(){
         }
     });
 }  
-
+function set_del_all_column_button(){
+    $(".del_all_column_button").click(function(){
+        var name_list = new Array;
+        $('#finished_list .list_content').each(function(){
+            name_list.push($(this).attr('name'));
+        })
+        var answer = confirm("確定刪除所有已完成欄位嗎?");
+        if (answer) {
+            delete_data(name_list);
+        }
+    });
+}
 //prevent form submit
 // function set_press_enter_invalid(){
 //    $('.list_content').keypress(function(e) {
@@ -157,6 +176,7 @@ $( document ).ready(function() {
     $(".add_button").click(function(){
         add_data();
     });
+    
 });
 
 
