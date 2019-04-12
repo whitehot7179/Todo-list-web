@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel=stylesheet type="text/css" href="reset.css">
+<link rel=stylesheet type="text/css" href="main.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoLiist</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="list_wrapper list_wrapper_top">
+            <div id="unfinished_list">
+                <div class="list_title"> - 待完成</div>
+            </div>
+        </div>  
+        <div class="list_wrapper list_wrapper_bottom">
+            <div id="finished_list">
+                 <div class="list_title"> - 已完成</div>
+            </div>
+        </div>  
+        <div id="add_button">
+            <button class="add_button"></button>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB0tE39fZa2GHIFAYaHvD-DIfXoFMSysBo",
+    authDomain: "todolistdb-a7351.firebaseapp.com",
+    databaseURL: "https://todolistdb-a7351.firebaseio.com",
+    projectId: "todolistdb-a7351",
+    storageBucket: "todolistdb-a7351.appspot.com",
+    messagingSenderId: "658092234485"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="add.js"></script>
