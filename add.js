@@ -46,9 +46,6 @@ function delete_data(key){
             db.ref('todolist/column/'+key[i]).remove();
         }
     }else db.ref('todolist/column/'+key).remove();
-    
-    console.log('delete');
-    console.log(key[0]);
     read_data(); //reload data from db again
 }
 
@@ -73,7 +70,6 @@ function read_data(){
                 +data.key+'" placeholder="'+placeholder+'" value="'+recieved_content+
                 '"><img class="del_column_button" src="del.png" alt="" ></div>';
             }
-            //console.log(data.val());
         });
         $('#unfinished_list').html(unfinished_column); //add html 
         $('#finished_list').html(finished_column); //add html
@@ -127,9 +123,7 @@ function set_focus_detect(){
             update_data(name,content,0);
         }else{
             update_data(name,content,0);
-            // $(".list_content").off("blur");
-            // //set_focusin_handler();
-            // console.log("hh");
+            //
         }
     });
 };
@@ -157,6 +151,7 @@ function set_del_column_button(){
         }
     });
 }  
+//set  del_all_column_button
 function set_del_all_column_button(){
     $(".del_all_column_button").click(function(){
         var name_list = new Array;
@@ -169,28 +164,20 @@ function set_del_all_column_button(){
         }
     });
 }
+//show the info div
 function show_info(){
     $('#info').slideDown("slow");
     setTimeout(function() {
         $('#info').slideUp("slow");
-    },1500);
+    },1000);
 }
-//prevent form submit
-// function set_press_enter_invalid(){
-//    $('.list_content').keypress(function(e) {
-//         if(e.which == 13) {
-//             $(this).focus();
-//         }
-//     }); 
-// }
-
 
 //=====document ready
 $( document ).ready(function() {
     read_data();
     set_focus_detect();
 
-    //===== events handler
+    //add_button handler
     $(".add_button").click(function(){
         add_data();
         $("#add_button").css("background-image","url('add_after.png')");
@@ -198,8 +185,6 @@ $( document ).ready(function() {
             $("#add_button").css("background-image","url('add.png')"); 
         },100);
     });
-
-    
 });
 
 
