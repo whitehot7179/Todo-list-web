@@ -178,3 +178,40 @@ body {
         width: calc(100vw + 18px);
     }
 }
+@media screen and (max-width: 600px){
+    #info{
+        height: 40px;
+        padding-left: 20px;
+        font-size: 18px;
+        line-height:30px;
+        box-shadow: 0 -1px 6px 1px rgb(0, 0, 0, 0.5);
+    }
+    #info>img{
+        height: 8px;
+        margin-right: 20px; 
+        margin-left: 3px; 
+    }
+    .list_wrapper{
+        padding: 16px;
+    }
+    .list_wrapper_top{
+        padding-top: 35px;
+        padding-bottom: 8px;
+    }
+    .list_wrapper_bottom{
+        padding-top: 8px;
+        padding-bottom: 35px;
+    }
+    #unfinished_list{
+        min-height: calc(50vh - 53px);
+    }
+    #finished_list{
+        min-height: calc(50vh - 53px);
+    }
+    #add_button{
+        width: 60px;
+        height: 60px;
+        right: 8px;
+        bottom:8px;
+    }
+}
