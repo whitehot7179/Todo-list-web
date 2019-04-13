@@ -178,7 +178,7 @@ body {
         width: calc(100vw + 18px);
     }
 }
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
     #info{
         height: 40px;
         padding-left: 20px;
